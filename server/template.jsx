@@ -9,8 +9,8 @@ export default function(innerHTML) {
                 <link rel='stylesheet' href='/style.css' />
             </head>
             <body>
-                <div id='root'> ${innerHTML} </div>
-                <script type='application/javascript' src='/bundle.js' />
+                <div id='root'>${innerHTML}</div>
+                <script type='application/javascript' src='/bundle.js'></script>
             </body>
         </html>
     `;

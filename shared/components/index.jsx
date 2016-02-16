@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { Router, Route, 
-         Link, IndexLink }  from 'react-router';
 import classNames           from 'classnames';
+
+import Footer               from './Footer'
 
 export default class MainView extends React.Component {
     static propTypes = {
@@ -12,6 +12,7 @@ export default class MainView extends React.Component {
         return (
             <div id='main-view'>
                 {this.props.children}
+                <Footer />
             </div>
         );
     }
