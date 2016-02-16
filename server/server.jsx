@@ -4,7 +4,7 @@ import { renderToString,
          renderToStaticMarkup } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import routes                   from '../shared/routes';
-import path                     from 'path';
+import template                 from './template'
 
 const app = express();
 
@@ -25,30 +25,10 @@ app.use( (req, res) => {
             return res.sendStatus(404);
         }
 
-        function getInnerHTML() {
-            const componentHTML = renderToString(<RouterContext {...renderProps} />);
-            return { __html: componentHTML };
-        }
+        const componentHTML = renderToString(<RouterContext {...renderProps} />);
+        const HTML = template(componentHTML);
 
-        const HTML = renderToStaticMarkup(
-            <html lang='en'>
-                <head>
-                    <meta charSet='utf-8' />
-                    <meta name='viewport' content='width=device-width' />
-                    <title> ECorp Management </title>
-                    <link rel='stylesheet' href='/style.css' />
-                </head>
-                <body>
-                    <div
-                        id='root'
-                        dangerouslySetInnerHTML={getInnerHTML()}
-                    />
-                    <script type='application/javascript' src='/bundle.js' />
-                </body>
-            </html>
-        );
-
-        res.send('<!DOCTYPE html' + HTML);
+        res.send(HTML);
     });
 });
 
