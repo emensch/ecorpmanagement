@@ -53,6 +53,10 @@ export default function(app) {
                         'file?name=images/[name].[ext]',
                         'img?minimize'
                     ] 
+                },
+                {
+                    test:       /\.woff$/,
+                    loader:     'url?limit=8192'   
                 }
             ]
         },
