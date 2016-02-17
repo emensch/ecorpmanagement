@@ -1,5 +1,5 @@
 export default function(innerHTML, dev) {
-    const stylesheet = !dev ? '<link rel=\'stylesheet\' href=\'/style.css\' />' : '';
+    const stylesheet = !dev ? '<link rel=\'stylesheet\' href=\'/style.css\' />' : ' ';
 
     const template = `
         <!DOCTYPE html>
@@ -12,7 +12,7 @@ export default function(innerHTML, dev) {
             </head>
             <body>
                 <div id='root'>${innerHTML}</div>
-                '<script type='application/javascript' src='/bundle.js'></script>'
+                <script type='application/javascript' src='/bundle.js'></script>
             </body>
         </html>
     `;
