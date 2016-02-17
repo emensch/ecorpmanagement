@@ -1,0 +1,12 @@
+.home-button {
+    position: absolute;
+    padding: 15px;
+    margin: 10px;
+    z-index: 10;
+    background-color: $bg-color-primary;
+
+    img {
+        width: 180px;
+        height: auto;
+    }
+}
