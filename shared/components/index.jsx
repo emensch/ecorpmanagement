@@ -10,10 +10,13 @@ export default class MainView extends React.Component {
 
     render() {
         let classes = classNames('main');
+        let contentClasses = classNames('content');
 
         return (
             <div className={classes} id='main-view'>
-                {this.props.children}
+                <div className={contentClasses}>
+                    {this.props.children}
+                </div>
                 <Footer date={new Date()} />
             </div>
         );

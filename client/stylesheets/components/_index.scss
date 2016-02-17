@@ -1,4 +1,7 @@
 .main {
-    background-color: $bg-color;
-    height: 100vh;
+    background-color: $bg-color-primary;
+    
+    .content {
+        height: 100vh;
+    }
 }
