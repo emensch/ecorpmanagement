@@ -8,7 +8,9 @@ import template                 from './template'
 
 const app = express();
 
-if(process.env.NODE_ENV !== 'production') {
+let dev = (process.env.NODE_ENV !== 'production');
+
+if(dev) {
     require('../webpack/webpack.dev').default(app);
 }
 
@@ -26,7 +28,7 @@ app.use( (req, res) => {
         }
 
         const componentHTML = renderToString(<RouterContext {...renderProps} />);
-        const HTML = template(componentHTML);
+        const HTML = template(componentHTML, dev);
 
         res.send(HTML);
     });
