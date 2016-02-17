@@ -7,10 +7,13 @@ export default class Home extends React.Component {
 
     render() {
         let classes = classNames('home');
+        let containerClasses = classNames('logo-container');
 
         return (
             <div className={classes}>
-                ECORP
+                <div className={containerClasses}>
+                    <img src='' />
+                </div>
                 <Nav />
             </div>
         );

@@ -1,0 +1,16 @@
+.home {
+    height: 100%;
+
+    .logo-container {
+        position: absolute;
+        top: 25%;
+        width: 100%;
+        text-align: center;
+
+        img {
+            height: 200px;
+            width: 550px;
+            background-color: grey;
+        }
+    }
+}
