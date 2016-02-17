@@ -46,6 +46,13 @@ export default function(app) {
                         'css-loader',
                         'sass-loader'
                     ]
+                },
+                {
+                    test:       /\.(jpe?g|png|gif|svg)$/,
+                    loaders: [
+                        'file?name=images/[name].[ext]',
+                        'img?minimize'
+                    ] 
                 }
             ]
         },

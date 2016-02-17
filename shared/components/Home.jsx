@@ -12,7 +12,7 @@ export default class Home extends React.Component {
         return (
             <div className={classes}>
                 <div className={containerClasses}>
-                    <img src='' />
+                    <img src='images/logo.png' />
                 </div>
                 <Nav />
             </div>

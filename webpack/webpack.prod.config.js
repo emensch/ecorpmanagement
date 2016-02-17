@@ -20,11 +20,18 @@ module.exports = {
             {
                 test:       /\.jsx?$/,
                 exclude:    /node_modules/,
-                loader:    'babel'
+                loader:     'babel'
             },
             {
                 test:       /\.scss$/,
                 loader:     ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+            },
+            {
+                test:       /\.(jpe?g|png|gif|svg)$/,
+                loaders: [
+                    'file?name=images/[name].[ext]',
+                    'img?minimize'
+                ] 
             }
         ]
     },
