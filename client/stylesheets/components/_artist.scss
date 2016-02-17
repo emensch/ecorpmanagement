@@ -1,0 +1,30 @@
+.artist {
+    .artist-header {
+        position: relative;
+        min-height: 65vh;
+        background-color: grey;
+
+        .artist-title-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+
+            .artist-title {
+                display: inline-block;
+
+                background-color: $bg-color-primary;
+                padding: 15px 30px;
+
+                font-family: $font-stack;
+                font-size: 36px;
+                letter-spacing: 2px;
+                color: $font-color-primary;
+            }
+        }
+    }
+
+    .artist-content {
+        padding: 20px;
+    }
+}
