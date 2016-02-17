@@ -9,7 +9,7 @@
         margin: 0;
         padding: 0;
 
-        font-size: 32px; 
+        font-size: 34px; 
 
         li {
             display: inline-block;
@@ -35,6 +35,6 @@
         &.facebook:before { content: '\e801'; }
         &.twitter:before { content: '\e802'; }
         &.instagram:before { content: '\e803'; }
-        &.youtube:before { content: '\e804'; }
+        &.youtube:before { content: '\e805'; }
     }
 }
