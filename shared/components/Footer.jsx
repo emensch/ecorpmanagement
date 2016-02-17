@@ -1,14 +1,17 @@
-import React        from 'react';
-import classNames   from 'classnames';
+import React, { PropTypes } from 'react';
+import classNames           from 'classnames';
 
 export default class Footer extends React.Component {
+    static propTypes = {
+        date: PropTypes.instanceOf(Date).isRequired 
+    };
 
     render() {
         let classes = classNames('footer');
 
         return (
             <div className={classes}>
-                Footer 
+                © { this.props.date.getFullYear() } ECorp Management 
             </div>
         );
     }
