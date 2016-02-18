@@ -1,0 +1,34 @@
+.contact {
+    .contact-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+
+        .contact-container-inner {
+            width: 80%;
+            max-width: 450px;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 30px 0;
+
+            .contact-header {
+                font-size: 22px;
+                font-family: $font-stack;
+                color: $font-color-primary;
+                letter-spacing: 4px;
+            }
+        }
+    }
+
+    .contact-container::before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: 0.25em;
+    }
+}
+
