@@ -1,0 +1,11 @@
+doctype html
+html(lang='en')
+    head
+        meta(charSet='utf-8')
+        meta(name='viewport' content='width=device-width')
+        title ECorp Management
+        unless dev
+            link(rel='stylesheet' href='/style.css')
+    body
+        #root !{innerHTML}
+        script(type='application/javascript' src='/bundle.js')

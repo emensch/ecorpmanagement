@@ -4,11 +4,13 @@ import { renderToString,
          renderToStaticMarkup } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import routes                   from '../shared/routes';
-import template                 from './template'
+import jade                     from 'jade';
 
 const app = express();
 
-let dev = (process.env.NODE_ENV !== 'production');
+const template = jade.compileFile('server/template.jade');
+
+const dev = (process.env.NODE_ENV !== 'production');
 
 if(dev) {
     require('../webpack/webpack.dev').default(app);
@@ -28,7 +30,10 @@ app.use( (req, res) => {
         }
 
         const componentHTML = renderToString(<RouterContext {...renderProps} />);
-        const HTML = template(componentHTML, dev);
+        const HTML = template({
+            innerHTML: componentHTML, 
+            dev: dev
+        });
 
         res.send(HTML);
     });
