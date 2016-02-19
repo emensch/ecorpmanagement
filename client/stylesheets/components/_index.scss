@@ -2,6 +2,33 @@
     background-color: $bg-color-primary;
     
     .content {
+        position: relative;
         min-height: 100vh;
     }
+}
+
+.fade-enter {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(20px);
+
+    &.fade-enter-active {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    transition: all 0.25s ease-in-out 0.25s;
+}
+
+.fade-leave {
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+
+    &.fade-leave-active {
+        opacity: 0;
+    }
+
+    transition: opacity 0.25s ease-in-out;
 }
