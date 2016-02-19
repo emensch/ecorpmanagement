@@ -1,7 +1,8 @@
 import React        from 'react';
 import classNames   from 'classnames';
 
-import Nav          from './Nav'
+import Wrapper      from './Wrapper';
+import Nav          from './Nav';
 
 export default class Home extends React.Component {
 
@@ -10,12 +11,14 @@ export default class Home extends React.Component {
         let containerClasses = classNames('logo-container');
 
         return (
-            <div className={classes}>
-                <div className={containerClasses}>
-                    <img src='/images/logo.png' />
+            <Wrapper>
+                <div className={classes}>
+                    <div className={containerClasses}>
+                        <img src='/images/logo.png' />
+                    </div>
+                    <Nav />
                 </div>
-                <Nav />
-            </div>
+            </Wrapper>
         );
     }
 }

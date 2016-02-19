@@ -1,6 +1,7 @@
 import React, { PropTypes }     from 'react';
 import classNames               from 'classnames';
 
+import Wrapper                  from './Wrapper';
 import HomeButton               from './HomeButton';
 import SocialLinks              from './SocialLinks';
 import ArtistBio                from './ArtistBio';
@@ -37,18 +38,20 @@ export default class Artist extends React.Component {
         let contentClasses = classNames('artist-content');
 
         return (
-            <div className={classes} id='artist'>
-                <HomeButton />
-                <div className={headerClasses}>
-                    <div className={titleContainerClasses}>
-                        <div className={titleClasses}> ARGENIL </div>
+            <Wrapper>
+                <div className={classes} id='artist'>
+                    <HomeButton />
+                    <div className={headerClasses}>
+                        <div className={titleContainerClasses}>
+                            <div className={titleClasses}> ARGENIL </div>
+                        </div>
+                    </div>
+                    <div className={contentClasses}>
+                        <SocialLinks socials={data.socials} />
+                        <ArtistBio content={data.bio} />
                     </div>
                 </div>
-                <div className={contentClasses}>
-                    <SocialLinks socials={data.socials} />
-                    <ArtistBio content={data.bio} />
-                </div>
-            </div>
+            </Wrapper>
         );
     }
 }
