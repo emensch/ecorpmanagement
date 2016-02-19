@@ -12,10 +12,12 @@ export default class MainView extends React.Component {
     render() {
         let classes = classNames('main');
 
+        let transition = (this.props.location.pathname === '/') ? 'fade-right' : 'fade-left';
+
         let transitionProps = {
             component: 'div',
             className: classNames('content'),
-            transitionName: 'fade',
+            transitionName: transition,
             transitionEnterTimeout: 500,
             transitionLeaveTimeout: 250
         }
