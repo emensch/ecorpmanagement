@@ -6,7 +6,7 @@ export default class Wrapper extends React.Component {
 
     render() {
         return (
-            <div>
+            <div {...this.props}>
                 { this.props.children }
                 <Footer date={new Date()} />
             </div>
