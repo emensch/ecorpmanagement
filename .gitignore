@@ -37,3 +37,6 @@ dist
 
 # Config
 env.config.js
+
+# Rethinkdb data
+rethinkdb_data
