@@ -5,19 +5,33 @@ import User     from '../models/user';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    // get all users
-});
-
-router.get('/:slug', (req, res) => {
-    // get one user
+    User.getAll()
+        .then( (result) => {
+            res.json(result);
+        })
+        .catch( (error) => {
+            res.json(error);
+        });
 });
 
 router.post('/', (req, res) => {
-    // create a user
+    User.create(req.body)
+        .then( (result) => {
+            res.json(result);
+        }) 
+        .catch( (error) => {
+            res.json(error);
+        });
 });
 
 router.delete('/:username', (req, res) => {
-    // delete a user
+    User.delete(req.params.username)
+        .then( (result) => {
+            res.json(result);
+        })
+        .catch( (error) => {
+            res.json(error);
+        }); 
 });
 
 export default router;
