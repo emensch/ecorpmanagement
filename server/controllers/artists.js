@@ -5,7 +5,7 @@ import Artist   from '../models/artist';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    Artist.getAll()
+    Artist.getAll(req.query.filter)
         .then( (result) => {
             res.json(result);
         })
@@ -19,16 +19,6 @@ router.get('/:slug', (req, res) => {
         .then( (result) => {
             res.json(result);
         }) 
-        .catch( (error) => {
-            res.json(error);
-        });
-});
-
-router.get('/names', (req, res) => {
-    Artist.getNames()
-        .then( (result) => {
-            res.json(result);
-        })
         .catch( (error) => {
             res.json(error);
         });

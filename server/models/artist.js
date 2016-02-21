@@ -17,12 +17,12 @@ const Artist = thinky.createModel('Artist', {
 });
 
 
-Artist.defineStatic('getAll', function() {
-    return this.run();
-});
-
-Artist.defineStatic('getNames', function() {
-    return this.pluck('name').run();
+Artist.defineStatic('getAll', function(filter) {
+    if(typeof filter == 'undefined') {
+        return this.run();
+    } else {
+        return this.pluck(filter).execute();
+    }
 });
 
 Artist.defineStatic('create', function(data) {
