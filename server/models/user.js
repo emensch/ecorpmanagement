@@ -1,6 +1,7 @@
 import thinky   from '../utils/thinky';
 import bcrypt   from 'bcrypt';
 import Promise  from 'bluebird';
+import jwt      from 'jsonwebtoken';
 const type = thinky.type;
 const r = thinky.r;
 
@@ -36,8 +37,20 @@ User.defineStatic('delete', function(username) {
         })
 });
 
-User.define('checkPassword', function(pw) {
-    return compare(pw, this.hash); 
+User.defineStatic('getToken', function(data) {
+    const user = this.get(data.username).run();
+    const verified = user.then( (user) => {
+        return compare(data.password, user.hash)
+    });
+
+    return Promise.join(user, verified, (user, verified) => {
+        if(!verified) {
+            return Promise.reject({error: '401'});
+        }
+
+        const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '7d' });
+        return {token};
+    });
 });
 
 export default User;

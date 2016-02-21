@@ -34,4 +34,15 @@ router.delete('/:username', (req, res) => {
         }); 
 });
 
+router.post('/authenticate', (req, res) => {
+    User.getToken(req.body)
+        .then( (result) => {
+            res.json(result);
+        }) 
+        .catch( (error) => {
+            console.log(error);
+            res.json(error);
+        });
+});
+
 export default router;
