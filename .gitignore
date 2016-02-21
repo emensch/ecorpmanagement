@@ -34,3 +34,6 @@ node_modules
 
 # Bundled files
 dist
+
+# Config
+env.config.js
