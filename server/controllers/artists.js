@@ -5,27 +5,63 @@ import Artist   from '../models/artist';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    // get all artists
+    Artist.getAll()
+        .then( (result) => {
+            res.json(result);
+        })
+        .catch( (error) => {
+            res.json(error);
+        });
 });
 
 router.get('/:slug', (req, res) => {
-    // get one artist
+    Artist.get(req.params.slug)
+        .then( (result) => {
+            res.json(result);
+        }) 
+        .catch( (error) => {
+            res.json(error);
+        });
 });
 
 router.get('/names', (req, res) => {
-    // get (only) names of all artists 
+    Artist.getNames()
+        .then( (result) => {
+            res.json(result);
+        })
+        .catch( (error) => {
+            res.json(error);
+        });
 });
 
 router.post('/', (req, res) => {
-    // create an artist
+    Artist.create(req.body)
+        .then( (result) => {
+            res.json(result);
+        }) 
+        .catch( (error) => {
+            res.json(error);
+        });
 });
 
 router.put('/:slug', (req, res) => {
-    // update an artist
+    Artist.update(req.params.slug, req.body)
+        .then( (result) => {
+            res.json(result);
+        })
+        .catch( (error) => {
+            res.json(error);
+        });
 });
 
 router.delete('/:slug', (req, res) => {
-    // delete an artist
+    Artist.delete(req.params.slug)
+        .then( (result) => {
+            res.json(result);
+        })
+        .catch( (error) => {
+            res.json(error);
+        });    
 });
 
 export default router;
