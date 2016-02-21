@@ -4,6 +4,7 @@ import { renderToString,
          renderToStaticMarkup } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import routes                   from '../shared/routes';
+import apiRoutes                from './controllers';
 import jade                     from 'jade';
 
 const app = express();
@@ -17,6 +18,7 @@ if(dev) {
 }
 
 app.use(express.static('dist'));
+app.use('/api', apiRoutes);
 
 app.use( (req, res) => {
     match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
