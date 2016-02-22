@@ -3,6 +3,10 @@ import React                    from 'react';
 import { renderToString, 
          renderToStaticMarkup } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
+import { createStore,
+         combineReducers,
+         applyMiddleware }      from 'redux';
+import { Provider }             from 'react-redux';
 import routes                   from '../shared/routes';
 import apiRoutes                from './controllers';
 import jade                     from 'jade';
