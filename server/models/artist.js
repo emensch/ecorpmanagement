@@ -13,7 +13,8 @@ const Artist = thinky.createModel('Artist', {
     }],
     createdOn: type.date().default(r.now())
 }, {
-    pk: 'slug'
+    pk: 'slug',
+    enforce_extra: 'remove'
 });
 
 

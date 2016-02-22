@@ -13,7 +13,8 @@ const User = thinky.createModel('User', {
     hash: type.string().required(),
     createdOn: type.date().default(r.now())
 }, {
-    pk: 'username'
+    pk: 'username',
+    enforce_extra: 'remove'
 });
 
 User.defineStatic('getAll', function() {
