@@ -48,7 +48,8 @@ User.defineStatic('getToken', function(data) {
             return Promise.reject({error: '401'});
         }
 
-        const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '7d' });
+        const username = user.username;
+        const token = jwt.sign({username}, process.env.JWT_SECRET, { expiresIn: '7d' });
         return {token};
     });
 });

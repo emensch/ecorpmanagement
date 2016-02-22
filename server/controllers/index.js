@@ -9,7 +9,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 
 router.get('/testauth', verifyAuth, (req, res) => {
-    res.send('Hello, Mr. Anderson' + req.user);
+    res.json(req.user);
 });
 
 router.use('/artists', artists);
