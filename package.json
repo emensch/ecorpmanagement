@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node --harmony server",
+    "start": "NODE_ENV=production node server",
     "dev": "node --harmony server",
     "build": "webpack --progress --color -p --config webpack/webpack.prod.config.js"
   },

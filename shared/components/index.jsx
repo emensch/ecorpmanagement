@@ -19,7 +19,9 @@ export default class MainView extends React.Component {
             className: classNames('content'),
             transitionName: transition,
             transitionEnterTimeout: 500,
-            transitionLeaveTimeout: 250
+            transitionLeaveTimeout: 250,
+            transitionAppear: true,
+            transitionAppearTimeout: 500
         }
 
         return (

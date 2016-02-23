@@ -7,6 +7,16 @@
     }
 }
 
+.fade-left-appear, .fade-right-appear {
+    opacity: 0;
+
+    &.fade-left-appear-active, &.fade-right-appear-active {
+        opacity: 1;
+    }
+
+    transition: opacity 0.5s ease-in-out;    
+}
+
 .fade-left-enter {
     position: absolute;
     width: 100%;
