@@ -5,7 +5,7 @@ import Artist   from '../models/artist';
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    Artist.getAll(req.query.filter)
+    Artist.getAll()
         .then( (result) => {
             res.json(result);
         })
@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:slug', (req, res, next) => {
-    Artist.get(req.params.slug)
+    Artist.getOne(req.params.slug)
         .then( (result) => {
             res.json(result);
         }) 
@@ -37,7 +37,7 @@ router.put('/:slug', (req, res, next) => {
 });
 
 router.delete('/:slug', (req, res, next) => {
-    Artist.delete(req.params.slug)
+    Artist.remove(req.params.slug)
         .then( (result) => {
             res.json(result);
         })
