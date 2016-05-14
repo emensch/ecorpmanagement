@@ -15,8 +15,8 @@ export default class Home extends React.Component {
                 <div className={classes}>
                     <div className={containerClasses}>
                         <img src='/images/logo.png' />
+                        <Nav />
                     </div>
-                    <Nav />
                 </div>
             </Wrapper>
         );
