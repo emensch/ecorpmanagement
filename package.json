@@ -5,17 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node --harmony server",
-    "dev": "node --harmony server",
+    "dev": "babel-node server",
     "build": "webpack --progress --color -p --config webpack/webpack.prod.config.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.9.1",
-    "babel": "^6.5.2",
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.2",
-    "babel-polyfill": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
@@ -48,6 +46,7 @@
     "webpack": "^1.12.13"
   },
   "devDependencies": {
+    "babel-cli": "^6.8.0",
     "babel-plugin-react-transform": "^2.0.0",
     "react-transform-hmr": "^1.0.2",
     "webpack-dev-middleware": "^1.5.1",
