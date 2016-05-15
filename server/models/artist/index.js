@@ -29,6 +29,7 @@ export default class Artist {
         const newArtist = {
             slug: genSlug(artist.name),
             name: artist.name,
+            image: artist.image,
             bio: artist.bio,
             socials: JSON.stringify(artist.socials)
         };
@@ -40,6 +41,7 @@ export default class Artist {
         const updatedArtist = {
             newSlug: genSlug(artist.name),
             name: artist.name,
+            image: artist.image,
             bio: artist.bio,
             socials: JSON.stringify(artist.socials)
         };

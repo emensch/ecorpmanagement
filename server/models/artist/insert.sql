@@ -1,2 +1,2 @@
-INSERT INTO Artists (slug, name, bio, socials)
-VALUES (${slug}, ${name}, ${bio}, ${socials})
+INSERT INTO Artists (slug, name, image, bio, socials)
+VALUES (${slug}, ${name}, ${image}, ${bio}, ${socials})
