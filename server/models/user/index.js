@@ -40,5 +40,25 @@ export default class User {
     static remove(username) {
         return db.query(remove, {username: username});
     }
+
+    static verifyAndGetToken(username, password) {
+        return db.one(find, {username: username})
+            .then( user => {
+                console.log(user)
+                return compare(password, user.password)
+            })
+            .then( verified => {
+                console.log(verified)
+                if(!verified) {
+                    return Promise.reject(401)
+                }
+
+                const token = jwt.sign({username}, process.env.JWT_SECRET, {
+                    expiresIn: '7d'
+                });
+
+                return {token};
+            });
+    }
 }
 

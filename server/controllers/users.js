@@ -29,7 +29,8 @@ router.delete('/:username', (req, res, next) => {
 });
 
 router.post('/authenticate', (req, res, next) => {
-    User.getToken(req.body)
+    console.log(req.body);
+    User.verifyAndGetToken(req.body.username, req.body.password)
         .then( (result) => {
             res.json(result);
         }) 
