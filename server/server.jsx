@@ -3,10 +3,8 @@ import React                    from 'react';
 import { renderToString, 
          renderToStaticMarkup } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
-import { createStore,
-         applyMiddleware }      from 'redux';
 import { Provider }             from 'react-redux';
-import thunk                    from 'redux-thunk';
+import configureStore           from '../shared/store/configureStore';
 import rootReducer              from '../shared/reducers';
 import routes                   from '../shared/routes';
 import apiRoutes                from './controllers';
@@ -26,7 +24,7 @@ app.use(express.static('dist'));
 app.use('/api', apiRoutes);
 
 app.use( (req, res) => {
-    const store = createStore(rootReducer, applyMiddleware(thunk));
+    const store = configureStore();
 
     match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
         if(err) {
