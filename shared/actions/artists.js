@@ -1,4 +1,5 @@
-import axios from 'axios';
+import getApiClient from '../utils/getApiClient';
+const api = getApiClient();
 
 export function loadArtistNames() {
     return (dispatch, getState) => {
@@ -14,7 +15,7 @@ export function loadArtistNames() {
 export function fetchArtistNames() {
     return dispatch => {
         dispatch(requestArtistNames());
-        return axios.get('/api/artists')
+        return api.get('/artists')
             .then(res => {
                 dispatch(requestArtistNamesSuccess(res))
             })
