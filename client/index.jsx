@@ -10,7 +10,8 @@ import './stylesheets/main.scss';
 import './images/logo.png';
 import './images/logo_small.png';
 
-const store = configureStore();
+const initialState = window.__INITIAL_STATE__;
+const store = configureStore(initialState);
 
 render(
     <Provider store={store}>

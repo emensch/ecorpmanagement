@@ -6,6 +6,8 @@ html(lang='en')
         title ECorp Management
         unless dev
             link(rel='stylesheet' href='/style.css')
+        script.
+            window.__INITIAL_STATE__ = !{initialState}
     body
         #root !{innerHTML}
         script(type='application/javascript' src='/bundle.js')

@@ -41,8 +41,12 @@ app.use( (req, res) => {
                 <RouterContext {...renderProps} />
             </Provider>
         );
+
+        const initialState = store.getState();
+
         const HTML = template({
-            innerHTML: componentHTML, 
+            innerHTML: componentHTML,
+            initialState: JSON.stringify(initialState),
             dev: dev
         });
 
