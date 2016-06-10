@@ -59,7 +59,10 @@ app.use( (req, res) => {
         getInitialState(store.dispatch, renderProps.components, renderProps.params)
             .then(renderView)
             .then(html => res.send(html))
-            .catch(err => res.sendStatus(500))
+            .catch(err => {
+                console.log(err.stack);
+                res.sendStatus(500)
+            })
     })
 });
 
