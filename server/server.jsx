@@ -9,6 +9,7 @@ import rootReducer              from '../shared/reducers';
 import routes                   from '../shared/routes';
 import apiRoutes                from './controllers';
 import jade                     from 'jade';
+import getInitialState          from '../shared/utils/getInitialState';
 
 const app = express();
 
@@ -17,7 +18,7 @@ const template = jade.compileFile('server/template.jade');
 const dev = (process.env.NODE_ENV !== 'production');
 
 if(dev) {
-    require('../webpack/webpack.dev').default(app);
+    require('../webpack/webpack.dev').default(app)
 }
 
 app.use(express.static('dist'));
@@ -29,29 +30,37 @@ app.use( (req, res) => {
     match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
         if(err) {
             console.error(err);
-            return res.sendStatus(500);
+            return res.sendStatus(500)
         }
 
         if(!renderProps) {
-            return res.sendStatus(404);
+            return res.sendStatus(404)
         }
 
-        const componentHTML = renderToString(
-            <Provider store={store}>
-                <RouterContext {...renderProps} />
-            </Provider>
-        );
+        function renderView() {
+            const componentHTML = renderToString(
+                <Provider store={store}>
+                    <RouterContext {...renderProps} />
+                </Provider>
+            );
 
-        const initialState = store.getState();
+            const initialState = store.getState();
 
-        const HTML = template({
-            innerHTML: componentHTML,
-            initialState: JSON.stringify(initialState),
-            dev: dev
-        });
+            const HTML = template({
+                innerHTML: componentHTML,
+                initialState: JSON.stringify(initialState),
+                dev: dev
+            });
 
-        res.send(HTML);
-    });
+            return HTML;
+        }
+
+
+        getInitialState(store.dispatch, renderProps.components, renderProps.params)
+            .then(renderView)
+            .then(html => res.send(html))
+            .catch(err => res.sendStatus(500))
+    })
 });
 
 export default app;
