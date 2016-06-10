@@ -1,57 +1,68 @@
-import React, { PropTypes }     from 'react';
-import classNames               from 'classnames';
+import React, { PropTypes } from 'react';
+import classNames           from 'classnames';
+import { connect }          from 'react-redux';
+import { loadArtist }       from '../actions/artists';
 
-import Wrapper                  from './Wrapper';
-import HomeButton               from './HomeButton';
-import SocialLinks              from './SocialLinks';
-import ArtistBio                from './ArtistBio';
+import Wrapper              from './Wrapper';
+import HomeButton           from './HomeButton';
+import SocialLinks          from './SocialLinks';
+import ArtistBio            from './ArtistBio';
 
-export default class Artist extends React.Component {
+class Artist extends React.Component {
+    static needs = [
+        loadArtist
+    ];
+
+    componentDidMount() {
+        this.props.getArtist({slug: this.props.params.slug});
+    }
 
     render() {
-        let data = {
-            bio: 'Michael Blume has quickly established himself as a powerful new voice of progressive R&B in New York City. Blume’s music centers on themes of the relationship with the self, critique of money-obsession, and shifting youth identity. His debut single "Manufactured Love" repeatedly hit Spotify\'s Viral Charts and earned him a New Artist feature on iTunes as well as high praise from prominent music blogs. Blume’s brand of conscious songwriting, soulful vocals, and charismatic performances has lead to sold out shows at many of NYC’s top venues. He is currently writing and recording his first full-length offering.',
-            socials: [
-                {
-                    type: 'soundcloud',
-                    link: '/a'
-                },
-                {
-                    type: 'twitter',
-                    link: '/as'
-                },
-                {
-                    type: 'instagram',
-                    link: '/asd'
-                },
-                {
-                    type: 'facebook',
-                    link: '/asdf'
-                }
-            ]
-        };
-
         let classes = classNames('artist');
         let headerClasses = classNames('artist-header');
         let titleContainerClasses = classNames('artist-title-container');
         let titleClasses = classNames('artist-title');
         let contentClasses = classNames('artist-content');
 
+        let bgStyle = {
+            backgroundImage: `url(${this.props.artist.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+        };
+
         return (
             <Wrapper>
                 <div className={classes} id='artist'>
                     <HomeButton />
-                    <div className={headerClasses}>
+                    <div className={headerClasses} style={bgStyle}>
                         <div className={titleContainerClasses}>
-                            <div className={titleClasses}> ARGENIL </div>
+                            <div className={titleClasses}> {this.props.artist.name} </div>
                         </div>
                     </div>
                     <div className={contentClasses}>
-                        <SocialLinks socials={data.socials} />
-                        <ArtistBio content={data.bio} />
+                        <SocialLinks socials={this.props.artist.socials} />
+                        <ArtistBio content={this.props.artist.bio} />
                     </div>
                 </div>
             </Wrapper>
         );
     }
 }
+
+function mapStateToProps(state, ownProps) {
+    let artist = state.artists[ownProps.params.slug];
+    return {
+        artist
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getArtist: slug => {
+            dispatch(loadArtist(slug))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Artist);
