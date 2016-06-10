@@ -44,3 +44,46 @@ export function requestArtistNamesFailure(error) {
         error
     }
 }
+
+export function loadArtist(params) {
+    console.log('params', params);
+    const { slug } = params;
+    return (dispatch, getState) => {
+
+        return dispatch(fetchArtist(slug))
+    }
+}
+
+export function fetchArtist(slug) {
+    return dispatch => {
+        dispatch(requestArtist(slug));
+        return api.get('/artists/' + slug)
+            .then(res => {
+                dispatch(requestArtistSuccess(res))
+            })
+            .catch(err => {
+                dispatch(requestArtistFailure(err))
+            })
+    }
+}
+
+export function requestArtist(slug) {
+    return {
+        type: 'REQUEST_ARTIST',
+        slug
+    }
+}
+
+export function requestArtistSuccess(res) {
+    return {
+        type: 'REQUEST_ARTIST_SUCCESS',
+        res
+    }
+}
+
+export function requestArtistFailure(error) {
+    return {
+        type: 'REQUEST_ARTIST_FAILURE',
+        error
+    }
+}
