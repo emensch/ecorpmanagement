@@ -1,12 +1,10 @@
 import React                from 'react';
 import { Link }             from 'react-router';
 import classNames           from 'classnames';
-import { connect }          from 'react-redux';
-import { loadArtistNames }  from '../actions/artists';
 
-class Nav extends React.Component {
-    componentWillMount() {
-        this.props.getArtists();
+export default class Nav extends React.Component {
+    constructor(props) {
+        super(props);
     }
 
     render() {
@@ -29,23 +27,3 @@ class Nav extends React.Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    let artists = [];
-    Object.keys(state.artists).forEach( key => {
-        artists.push({slug: key, name: state.artists[key].name})
-    });
-    return {
-        artists
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        getArtists: () => {
-            dispatch(loadArtistNames())
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
