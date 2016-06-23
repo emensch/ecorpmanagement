@@ -51,7 +51,7 @@ class Artist extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    let artist = state.artists[ownProps.params.slug];
+    let artist = state.artists.items[ownProps.params.slug];
     return {
         artist
     }

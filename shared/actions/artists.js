@@ -4,7 +4,7 @@ const api = getApiClient();
 export function loadArtistNames() {
     return (dispatch, getState) => {
         const artists = Object.keys(getState().artists);
-        if (artists.length > 0) {
+        if (artists.gotAllNames) {
             return null
         }
 

@@ -1,4 +1,7 @@
-const initialState = {};
+const initialState = {
+    gotAllNames: false,
+    items: {}
+};
 
 export default function artists(state = initialState, action) {
     switch(action.type) {
@@ -7,12 +10,19 @@ export default function artists(state = initialState, action) {
             action.res.data.forEach(item => {
                 artists[item.slug] = {name: item.name}
             });
-            return { ...state, ...artists };
+            return {
+                ...state,
+                gotAllNames: true,
+                items: { ...artists }
+            };
         case 'REQUEST_ARTIST_SUCCESS':
             console.log('action', action);
             let _artists = {};
             _artists[action.res.data.slug] = action.res.data;
-            return { ...state, ..._artists };
+            return {
+                ...state,
+                items: { ..._artists }
+            };
         default:
             return state;
     }

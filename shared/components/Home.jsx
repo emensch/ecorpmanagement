@@ -34,8 +34,8 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
     let artists = [];
-    Object.keys(state.artists).forEach( key => {
-        artists.push({slug: key, name: state.artists[key].name})
+    Object.keys(state.artists.items).forEach( key => {
+        artists.push({slug: key, name: state.artists.items[key].name})
     });
     return {
         artists
