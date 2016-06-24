@@ -3,7 +3,7 @@ import classNames           from 'classnames';
 import { connect }          from 'react-redux';
 import { loadArtistNames }  from '../actions/artists';
 
-import Wrapper              from './Wrapper';
+import Wrapper              from './FooterWrapper';
 import Nav                  from './Nav';
 import LoadableContent      from './LoadableContent';
 

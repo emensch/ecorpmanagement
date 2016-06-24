@@ -3,7 +3,7 @@ import classNames           from 'classnames';
 import { connect }          from 'react-redux';
 import { loadArtist }       from '../actions/artists';
 
-import Wrapper              from './Wrapper';
+import Wrapper              from './FooterWrapper';
 import HomeButton           from './HomeButton';
 import SocialLinks          from './SocialLinks';
 import ArtistBio            from './ArtistBio';

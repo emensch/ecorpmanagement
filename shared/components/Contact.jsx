@@ -1,7 +1,7 @@
 import React, { PropTypes }     from 'react';
 import classNames               from 'classnames';
 
-import Wrapper                  from './Wrapper';
+import Wrapper                  from './FooterWrapper';
 import ContactForm              from './ContactForm';
 import HomeButton               from './HomeButton';
 
