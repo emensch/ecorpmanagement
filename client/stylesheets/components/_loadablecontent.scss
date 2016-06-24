@@ -1,0 +1,45 @@
+$loader-height: 24px;
+$duration: 750ms;
+
+@keyframes pulse {
+    50% {
+        background: $font-color-primary;
+    }
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: inherit;
+}
+
+.loader {
+    position: relative;
+    background: $font-color-secondary;
+    height: $loader-height;
+    width: $loader-height / 4;
+    animation: pulse $duration infinite;
+    animation-delay: $duration / 3;
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        background: $font-color-secondary;
+        height: $loader-height / 1.5;
+        width: $loader-height / 4;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: pulse $duration infinite;
+    }
+
+    &:before {
+        left: $loader-height / 1.5;
+        animation-delay: $duration / 1.5;
+    }
+
+    &:after {
+        right: $loader-height / 1.5;
+    }
+}
