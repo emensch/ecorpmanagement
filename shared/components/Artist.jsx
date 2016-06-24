@@ -7,6 +7,7 @@ import Wrapper              from './Wrapper';
 import HomeButton           from './HomeButton';
 import SocialLinks          from './SocialLinks';
 import ArtistBio            from './ArtistBio';
+import LoadableContent      from './LoadableContent';
 
 class Artist extends React.Component {
     static needs = [
@@ -33,18 +34,20 @@ class Artist extends React.Component {
 
         return (
             <Wrapper>
-                <div className={classes} id='artist'>
-                    <HomeButton />
-                    <div className={headerClasses} style={bgStyle}>
-                        <div className={titleContainerClasses}>
-                            <div className={titleClasses}> {this.props.artist.name} </div>
+                <LoadableContent loaded={this.props.artist.loaded}>
+                    <div className={classes} id='artist'>
+                        <HomeButton />
+                        <div className={headerClasses} style={bgStyle}>
+                            <div className={titleContainerClasses}>
+                                <div className={titleClasses}> {this.props.artist.name} </div>
+                            </div>
+                        </div>
+                        <div className={contentClasses}>
+                            <SocialLinks socials={this.props.artist.socials} />
+                            <ArtistBio content={this.props.artist.bio} />
                         </div>
                     </div>
-                    <div className={contentClasses}>
-                        <SocialLinks socials={this.props.artist.socials} />
-                        <ArtistBio content={this.props.artist.bio} />
-                    </div>
-                </div>
+                </LoadableContent>
             </Wrapper>
         );
     }
