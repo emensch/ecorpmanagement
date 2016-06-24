@@ -3,7 +3,8 @@ const api = getApiClient();
 
 export function loadArtistNames() {
     return (dispatch, getState) => {
-        const artists = Object.keys(getState().artists);
+        const { artists } = getState();
+
         if (artists.gotAllNames) {
             return null
         }
@@ -46,9 +47,13 @@ export function requestArtistNamesFailure(error) {
 }
 
 export function loadArtist(params) {
-    console.log('params', params);
-    const { slug } = params;
     return (dispatch, getState) => {
+        const { slug } = params;
+        const { artists } = getState();
+
+        if(typeof artists.items[slug] !== 'undefined' && artists.items[slug].loaded) {
+            return null
+        }
 
         return dispatch(fetchArtist(slug))
     }
